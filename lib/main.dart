@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Provider/add_wallpaper_provider.dart';
+import 'Provider/apply_wallpaper.dart';
 import 'Screens/splash_screen.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UploadWallPaperProvider()),
-        // ChangeNotifierProvider(create: (_) => ApplyWallpaperProvider()),
+        ChangeNotifierProvider(create: (_) => ApplyWallpaperProvider()),
       ],
       child: const MaterialApp(
         home: SplashScreen(),

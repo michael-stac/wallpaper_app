@@ -15,8 +15,8 @@ class _MainActivityPageState extends State<MainActivityPage> {
     {'icon' : Icons.download, 'title' : 'Download'},
   ];
   List<Widget> bottomNavPages = [
-    const WallpaperHomePage(),
-    const DownloadHomePage(),
+    const WallPaperHomePage(),
+    const DownloadPage(),
 
 
   ];
