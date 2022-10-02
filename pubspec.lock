@@ -57,6 +57,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
+  crypto:
+    dependency: transitive
+    description:
+      name: crypto
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -186,6 +193,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_text_form_field:
+    dependency: "direct main"
+    description:
+      name: flutter_text_form_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   flutter_wallpaper_manager:
     dependency: "direct main"
     description:
@@ -198,6 +212,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   google_sign_in:
     dependency: "direct main"
     description:
