@@ -9,6 +9,7 @@ import '../../../Utilis/pick_file.dart';
 import '../../../Utilis/show_alert.dart';
 import '../../../Widgets/custom_button.dart';
 
+
 class AddWallPaperPage extends StatefulWidget {
   const AddWallPaperPage({Key? key}) : super(key: key);
 
@@ -19,7 +20,6 @@ class AddWallPaperPage extends StatefulWidget {
 class _AddWallPaperPageState extends State<AddWallPaperPage> {
   TextEditingController controller = TextEditingController();
   String image = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,36 +58,36 @@ class _AddWallPaperPageState extends State<AddWallPaperPage> {
                     if (image != '') Image.file(File(image)),
                     Consumer<UploadWallPaperProvider>(
                         builder: (context, add, child) {
-                      WidgetsBinding.instance!.addPostFrameCallback((_) {
-                        if (add.message != '') {
-                          // print(add.message);
-                          showAlert(context, add.message);
-                          add.clear();
-                        }
-                      });
+                          WidgetsBinding.instance!.addPostFrameCallback((_) {
+                            if (add.message != '') {
+                              // print(add.message);
+                              showAlert(context, add.message);
+                              add.clear();
+                            }
+                          });
 
-                      return customButton(
-                        text: 'Upload',
-                        onTap: add.status == true
-                            ? null
-                            : () {
-                                final uid =
-                                    FirebaseAuth.instance.currentUser!.uid;
+                          return customButton(
+                            text: 'Upload',
+                            onTap: add.status == true
+                                ? null
+                                : () {
+                              final uid =
+                                  FirebaseAuth.instance.currentUser!.uid;
 
-                                if (image != '') {
-                                  add.addWallPaper(
-                                    wallPaperImage: File(image),
-                                    uid: uid,
-                                    price: controller.text,
-                                  );
-                                } else {
-                                  showAlert(context, "Upload image");
-                                }
-                              },
-                        textColor: Colors.white,
-                        bgColor: add.status == true ? Colors.grey : Colors.blue,
-                      );
-                    })
+                              if (image != '') {
+                                add.addWallPaper(
+                                  wallPaperImage: File(image),
+                                  uid: uid,
+                                  price: controller.text,
+                                );
+                              } else {
+                                showAlert(context, "Upload image");
+                              }
+                            },
+                            textColor: Colors.white,
+                            bgColor: add.status == true ? Colors.grey : Colors.blue,
+                          );
+                        })
                   ],
                 )),
           )

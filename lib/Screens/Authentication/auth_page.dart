@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_text_form_field/flutter_text_form_field.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:whatsapp_wallpaper/Utilis/routers.dart';
 
 import '../../Provider/auth_provider.dart';
 import '../../Styles/appcolors.dart';
-import '../../Utilis/show_alert.dart';
+import '../../Utilis/routers.dart';
 import '../../Widgets/custom_button.dart';
+import '../BottomNavPages/WallpaperPage/add_wallpaper_page.dart';
+import '../BottomNavPages/WallpaperPage/all_wallpaper_page.dart';
 import '../main_activity.dart';
+import 'login.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -17,9 +19,11 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final TextEditingController _address = TextEditingController();
+  final TextEditingController name = TextEditingController();
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+  bool isLoading = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +129,7 @@ class _AuthPageState extends State<AuthPage> {
                             ),
                           ),
                           CustomTextField(
-                            _address,
+                            name,
                             hint: "Your fullname",
                             password: false,
                             backgroundColor: Colors.transparent,
@@ -183,29 +187,37 @@ class _AuthPageState extends State<AuthPage> {
                           ),
                           customButton(
                             textStyle: const TextStyle(fontSize: 18),
-                            onTap: () {},
+                            onTap: () {
+                              nextPage(context: context, page: const  MainActivityPage());
+
+                              // setState(() {
+                              //   isLoading = true;
+                              // });
+                              // AuthClass()
+                              //     .signIN(
+                              //     email: _email.text.trim(),
+                              //     password: _password.text.trim())
+                              //     .then((value) {
+                              //   if (value == "welcome") {
+                              //     setState(() {
+                              //       isLoading = false;
+                              //     });
+                              //     nextPage(
+                              //         context: context,
+                              //         page: const WallPaperHomePage());
+                              //   } else {
+                              //     setState(() {
+                              //       isLoading = false;
+                              //     });
+                              //
+                              //   }
+                              // });
+                            },
                             text: 'Proceed',
                             bgColor: AppColor.primaryColor,
                             textColor: AppColor.white,
                           ),
-                          Center(
-                              child: customButton(
-                                  text: 'Continue with google',
-                                  onTap: () {
-                                    AuthenticationProvider().signInWithGoogle().then((value) {
-                                      nextPageOnly(
-                                          page: const MainActivityPage(), context: context);
-                                    }).catchError((e) {
-                                      showAlert(context, e.toString());
-                                    });
-                                  },
-                                  textColor: Colors.white,
-                                  bgColor: Colors.blue,
-                                  icon: const Icon(
-                                    Icons.mail_outline,
-                                    color: Colors.red,
-                                  ))),
-                          
+
                         ],
                       ),
                     ),

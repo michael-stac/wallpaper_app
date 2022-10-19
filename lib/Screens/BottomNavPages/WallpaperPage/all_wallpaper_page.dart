@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:whatsapp_wallpaper/Screens/BottomNavPages/WallpaperPage/view_all_wallpaper_page.dart';
 
 import '../../../Utilis/routers.dart';
 import 'add_wallpaper_page.dart';
-import 'view_all_wallpaper_page.dart';
+
 
 class WallPaperHomePage extends StatefulWidget {
   const WallPaperHomePage({Key? key}) : super(key: key);
@@ -14,8 +14,7 @@ class WallPaperHomePage extends StatefulWidget {
 }
 
 class _WallPaperHomePageState extends State<WallPaperHomePage> {
-  final CollectionReference wallpaper =
-  FirebaseFirestore.instance.collection('AllWallpaper');
+  final CollectionReference wallpaper = FirebaseFirestore.instance.collection('AllWallpaper');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
